@@ -44,11 +44,11 @@ function play_audio (verse) {
 
     }
     if (nextVerse <= (document.getElementsByClassName("verse-num").length)){
-        if (inTensPosition){
+        if (inTensPosition && !inHundredsPosition){
             nextVerse = verse.slice(0, -2) + nextVerse;
             play_audio(nextVerse);
         }
-        else if(inHundredsPosition){
+        else if(inHundredsPosition && !inTensPosition){
             nextVerse = verse.slice(0, -3) + nextVerse;
             play_audio(nextVerse);
         }
