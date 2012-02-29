@@ -1,6 +1,6 @@
   var inTensPosition = false;
   var inHundredsPosition = false;
-  
+
 function play_audio (verse) {
     console.log("Play verse " + verse);
   var audioUrl = "http://audio.esvonline.org/hw/" + verse,
@@ -17,6 +17,11 @@ function play_audio (verse) {
   var a = document.getElementsByTagName("audio")[0];
   a.addEventListener("ended", function(evt) {
     console.log("Ended... " + verse);
+    
+    // scroll to current verse
+    var currentSpan = document.getElementById("v" + verse + "-1");
+    var location = findPos(currentSpan);
+    window.scroll(0,location);
     evt.target.parentNode.removeChild(evt.target);
 
     var nextVerse = 0;
@@ -72,6 +77,17 @@ nextVerse = Number(verse.charAt(verse.length-3)+verse.charAt(verse.length-2)+ver
   }, true);
   a.play();
   console.log("We are in tens position " + inTensPosition + " hundreds " + inHundredsPosition + " " + a.src);
+}
+
+//Finds y value of given object
+function findPos(obj) {
+	var curtop = 0;
+	if (obj.offsetParent) {
+		do {
+			curtop += obj.offsetTop;
+		} while (obj = obj.offsetParent);
+	return [curtop];
+	}
 }
 
 $(document).ready(function() {
