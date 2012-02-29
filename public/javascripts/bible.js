@@ -1,4 +1,5 @@
 function play_audio (verse) {
+    console.log("Play verse " + verse);
   var audioUrl = "http://audio.esvonline.org/hw/" + verse,
       audio = $('<audio />', {
         src: audioUrl,
@@ -14,12 +15,24 @@ function play_audio (verse) {
   a.addEventListener("ended", function(evt) {
     console.log("Ended... ");
     evt.target.parentNode.removeChild(evt.target);
-    var nextVerse = verse + 1;
-    if ($('#v' + nextVerse + '-1').length == 1) {
-      play_audio(nextVerse);
+    var nextVerse = Number(verse.charAt(verse.length-1)) + 1;
+    if (nextVerse <= (document.getElementsByClassName("verse-num").length)){
+        if (nextVerse > 9){
+            nextVerse = verse.slice(0, -2) + nextVerse;
+            play_audio(nextVerse);
+        }
+        else if(nextVerse > 99){
+            nextVerse = verse.slice(0, -3) + nextVerse;
+            play_audio(nextVerse);
+        }
+        else{
+            nextVerse = verse.slice(0, -1) + nextVerse;
+            play_audio(nextVerse);
+        }
     }
   }, true);
   a.play();
+  console.log(a.src);
 }
 
 $(document).ready(function() {
