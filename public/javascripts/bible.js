@@ -16,18 +16,18 @@ function play_audio (verse) {
   $('body').append(audio);
   var a = document.getElementsByTagName("audio")[0];
   a.addEventListener("ended", function(evt) {
-    console.log("Ended... ");
+    console.log("Ended... " + verse);
     evt.target.parentNode.removeChild(evt.target);
-    var nextVerse;
+
+    var nextVerse = 0;
     if (inTensPosition){
     console.log("In ten's position with verse " + verse);
-        nextVerse = Number(verse.charAt(verse.length-2)+verse.charAt(verse.length-1)) + 1;
-    console.log(verse + " " + nextVerse);
+    nextVerse = Number(verse.charAt(verse.length -2)+verse.charAt(verse.length -1)) + 1;
+    console.log("In ten's position with nextVerse " + nextVerse);
     }
     else if(inHundredsPosition){
         console.log("In hundred's position with verse " + verse);
-
-        nextVerse = Number(verse.charAt(verse.charAt(verse.length-3)+verse.length-2)+verse.charAt(verse.length-1)) + 1;
+nextVerse = Number(verse.charAt(verse.length-3)+verse.charAt(verse.length-2)+verse.charAt(verse.length-1)) + 1;
     }
     else{
         nextVerse = Number(verse.charAt(verse.length-1)) + 1;
@@ -44,16 +44,25 @@ function play_audio (verse) {
 
     }
     if (nextVerse <= (document.getElementsByClassName("verse-num").length)){
+    console.log("Still more verses");
         if (inTensPosition && !inHundredsPosition){
+        
             nextVerse = verse.slice(0, -2) + nextVerse;
+                        console.log("About to play " + nextVerse);
+
             play_audio(nextVerse);
         }
         else if(inHundredsPosition && !inTensPosition){
+            console.log("Next verse is " + nextVerse);
+
             nextVerse = verse.slice(0, -3) + nextVerse;
+                console.log("Next verse is " + nextVerse);
+
             play_audio(nextVerse);
         }
         else{
             nextVerse = verse.slice(0, -1) + nextVerse;
+            console.log("About to play " + nextVerse);
             play_audio(nextVerse);
         }
     }
