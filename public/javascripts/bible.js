@@ -43,7 +43,7 @@ nextVerse = Number(verse.charAt(verse.length-3)+verse.charAt(verse.length-2)+ver
     console.log("Next verse is 100 " + nextVerse);
 
     }
-    if (nextVerse <= (document.getElementsByClassName("verse-num").length)){
+    if (nextVerse <= (document.getElementsByClassName("verse-num").length+1)){
     console.log("Still more verses");
         if (inTensPosition && !inHundredsPosition){
         
@@ -66,6 +66,9 @@ nextVerse = Number(verse.charAt(verse.length-3)+verse.charAt(verse.length-2)+ver
             play_audio(nextVerse);
         }
     }
+    else{
+        console.log("Chapter has completed playing audio");
+    }
   }, true);
   a.play();
   console.log("We are in tens position " + inTensPosition + " hundreds " + inHundredsPosition + " " + a.src);
@@ -75,7 +78,6 @@ $(document).ready(function() {
   var cleanVerse = /^p([0-9]+).[0-9]+\-[0-9]$/,
       verseMatch = cleanVerse.exec($('.esv-text :first-child:first').attr('id')),
       verse      = verseMatch[1];
-
   if (verse) {
     play_audio(verse);
   }
