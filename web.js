@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var jade = require('jade');
 
 var app = module.exports = express.createServer(),
     http = require('http'),
