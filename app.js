@@ -56,7 +56,7 @@ app.get('/', function(req, res) {
   res.redirect("/Genesis 1");
 });
 
-app.get('/:reference', function(req, res){
+app.get('/:reference', function(req, res) {
   var scripture = "";
   http.get(requestOptions(req.params.reference), function(response) {
     response.setEncoding('utf8');
