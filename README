@@ -1,5 +1,0 @@
-I was inspired by the iPhone ESV Bible Plus app that scrolls through the verses while the Bible is being read. This is my attempt to translate that functionality into HTML5 with the audio tag and ESV's online API.
-
-The app currently uses the Express.js framework for easy URI middleware. The majority of the logic is meant to live on the client side, since the browser is pretty powerful these days. I am doing the proof-of-concept in jQuery at this moment, but Backbone.js or Sproutcore are likely candidates for future development.
-
-This is still very much a concept, and the audio tag support isn't fully operational yet. However, it is my hope to make this public and inspire more experimental Bible application development.
