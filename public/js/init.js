@@ -24,7 +24,7 @@
         };
 
         if (Modernizr.touch) {
-          $('body').click(playFirstVerse);
+          $('.esv h2').on("touchstart", playFirstVerse);
         } else playFirstVerse();
       });
     }
