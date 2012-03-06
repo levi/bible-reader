@@ -10,16 +10,22 @@
       /*
        * Configure SoundManager2
        */
-      soundManager.url = '/javascripts/soundmanager/swf/';
+      soundManager.url = '/js/soundmanager/swf/';
       soundManager.flashVersion = 9;
 
       /*
        * Init Application
        */
       soundManager.onready(function() {
-        self.loadVerses();
-        console.log("[BibleReader] Verse Objects", self.verses);
-        self.playVerse();
+        var playFirstVerse = function() {
+          self.loadVerses();
+          console.log("[BibleReader] Verse Objects", self.verses);
+          self.playVerse();
+        };
+
+        if (Modernizr.touch) {
+          $('body').click(playFirstVerse);
+        } else playFirstVerse();
       });
     }
 

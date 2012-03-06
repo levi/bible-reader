@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "express": "2.x.x",
-    "jade": "0.x.x"
+    "ejs": "0.x.x"
   },
   "license": "MIT",
   "engine": {
