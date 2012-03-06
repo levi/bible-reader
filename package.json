@@ -1,0 +1,21 @@
+{
+  "name": "bible-reader",
+  "version": "0.2.0",
+  "author": "Levi McCallum <levi@levimccallum.com>",
+  "description": "An audio Bible reader web application",
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stillmotion/bible-reader.git"
+  },
+  "dependencies": {
+    "express": "2.x.x",
+    "jade": "0.x.x"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.4"
+  }
+}
